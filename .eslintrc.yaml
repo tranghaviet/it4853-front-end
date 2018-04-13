@@ -1,0 +1,14 @@
+---
+extends: "airbnb-base"
+parserOptions:
+  ecmaVersion: 6
+env:
+  es6: true
+  node: true
+  browser: true
+rules:
+  no-console: off
+  react/jsx-filename-extension:
+    - 1
+    - { extensions": [".js", ".jsx"] }
+parser: "babel-eslint" # needed to make babel stuff work properly
