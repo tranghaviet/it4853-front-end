@@ -4,13 +4,12 @@ parserOptions:
   sourceType: "module"
 env:
   es6: true
-  # node: true
   browser: true
 rules:
   no-console: off
   no-unused-vars: off
   semi: [error, always]
   react/jsx-filename-extension:
-    - { extensions": [".js", ".jsx"] }
+    - extensions": [".js", ".jsx"]
 parser: "babel-eslint" # needed to make babel stuff work properly
 plugins: ["react"]

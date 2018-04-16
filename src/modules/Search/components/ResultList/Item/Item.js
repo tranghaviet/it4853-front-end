@@ -12,15 +12,11 @@ class Item extends Component {
         <div className="item-title h3">
           <a href={this.props.item.url}>
             {this.props.item.title}
-          {/* <a href="javascript:void(0);">
-            title */}
           </a>
         </div>
-
         <div className="item-content">
           <p>
-            {/* {this.props.content} */}
-            content
+            {this.props.content}
           </p>
         </div>
       </div>
