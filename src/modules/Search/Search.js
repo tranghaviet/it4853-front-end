@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SearchForm from './components/SearchForm/SearchForm';
 import Result from './components/ResultList/Result';
 
-class Search extends Component {
+export default class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: null,
+    }
+  }
+
+  getResultsFromSearchForm = (results) => {
+    this.setState({results: results});
+  }
+
   render() {
     return (
       <div>
-        <SearchForm />
-        <Result />
+        <SearchForm sendResultsToParent={this.getResultsFromSearchForm} />
+        <Result results={this.state.results} />
       </div>
     );
   }
 }
-
-export default Search;

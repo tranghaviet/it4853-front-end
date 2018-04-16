@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchForm from './modules/Search/Search';
-import Footer from "./modules/Common/Footer/Footer";
+import SearchForm from '../Search/Search';
+import Footer from "../Common/Footer/Footer";
 
 class App extends Component {
   render() {

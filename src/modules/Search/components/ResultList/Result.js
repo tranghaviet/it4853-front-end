@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import './Result.css';
 import Item from './Item/Item';
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export default class Result extends Component {
+  listResults(results) {
+    let listItems = null;
 
-function ListResult(props) {
-  const numbers = props.numbers;
+    if(results == null) {
+     listItems = <p>Please enter query</p>;
+    } else {
+      console.log(results);
+      listItems = results.map(e => {
+        return <Item item={e} />
+      });
+    }
 
-  const listItems = numbers.map(number => (
-    <div className="list-group-item result-item" key={number.toString()}>
-      <Item />
-    </div>
-  ));
+    // console.log(listItems);
+    return <div className="center-block result-block">{listItems}</div>
+  }
 
-  return <div className="center-block result-block">{listItems}</div>;
-}
-
-class Result extends Component {
   render() {
-    return ListResult({ numbers });
+    return this.listResults(this.props.results);
   }
 }
-
-
-export default Result;

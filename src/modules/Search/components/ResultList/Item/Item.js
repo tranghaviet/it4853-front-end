@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 
 class Item extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props.item);
+  }
+
   render() {
     return (
-      <div>
+      <div className="list-group-item item">
         <div className="item-title h3">
-          {/* <a href={this.props.url}>
-            {this.props.title} */}
-          <a href="#">
-            afasdfgasdgg
+          <a href={this.props.item.url}>
+            {this.props.item.title}
+          {/* <a href="javascript:void(0);">
+            title */}
           </a>
         </div>
 
         <div className="item-content">
           <p>
             {/* {this.props.content} */}
-            adfasd
+            content
           </p>
         </div>
       </div>
