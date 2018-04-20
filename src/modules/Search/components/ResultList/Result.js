@@ -3,23 +3,24 @@ import './Result.css';
 import Item from './Item/Item';
 
 export default class Result extends Component {
-  listResults(results) {
-    let listItems = null;
+  listResults(data) {
+    const  listItems = data.hits.hits.map(e => {
+      return <Item item={e} key={e._id} />;
+    });
 
-    if(results == null) {
-     listItems = <p>Please enter query</p>;
-    } else {
-      console.log(results);
-      listItems = results.map(e => {
-        return <Item item={e} />
-      });
-    }
-
-    // console.log(listItems);
-    return <div className="center-block result-block">{listItems}</div>
+    return <div className="result-block">{listItems}</div>;
   }
 
   render() {
-    return this.listResults(this.props.results);
+    if (!this.props.data) {
+      return <div className="h2 text-center">Please enter query</div>;
+    }
+
+    return (
+      <div>
+        <p>Total results: {this.props.data.hits.total}</p>
+        {this.listResults(this.props.data)}
+      </div>
+    );
   }
 }

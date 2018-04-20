@@ -1,15 +1,21 @@
 ---
-extends: ["eslint:recommended", "plugin:react/recommended"]
+extends: ["eslint:recommended"]
 parserOptions:
   sourceType: "module"
 env:
   es6: true
+  node: true
   browser: true
 rules:
   no-console: off
   no-unused-vars: off
-  semi: [error, always]
+  semi:
+    - error
+    - always
   react/jsx-filename-extension:
-    - extensions": [".js", ".jsx"]
+    - 1
+    - extensions:
+      - .js
+      - .jsx
 parser: "babel-eslint" # needed to make babel stuff work properly
 plugins: ["react"]

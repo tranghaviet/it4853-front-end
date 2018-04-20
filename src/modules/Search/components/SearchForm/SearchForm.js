@@ -1,47 +1,51 @@
 import React from 'react';
 import './SearchForm.css';
-import axios from '../../../../utils/axi';
+import configEls from '../../../../config/els';
+import axi from "../../../../utils/axi";
 
 export default class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {query: ''};
+    this.state = {
+      query: '',
+      limit: 20,
+      offset: 0,
+      // data: null,
+    };
   }
 
   handleChangeQuery = (event) => {
-    const query = event.target.value;
-    // console.log(query);
-    let results = null;
-    axios({
+    this.setState({query: event.target.value});
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!this.props.query) {
+      this.sendQuery(this.state.query);
+    }
+  };
+
+  sendQuery = (query) => {
+    axi({
+      method: 'post',
+      url: `/${configEls.index}/_doc/_search?size=${this.state.limit}&from=${this.state.offset}`,
       data: {
         query: {
           query_string: {
-            default_field: 'content',
+            fields: ['title', 'content'],
             query: query
           }
         }
-      }
+      },
     })
-    .then(res => results = res)
+    .then(res => {
+      console.log(res.data);
+      // this.setState({data: res.data});
+      this.props.senddataToParent(res.data);
+    })
     .catch(err => console.log(err));
-
-    console.log(results);
-
-    this.props.sendResultsToParent(results);
-    // this.props.sendResultsToParent([
-    //   {
-    //     title: 'aaa',
-    //     content: 'bbb',
-    //   },
-    //   {
-    //     title: 'ccc',
-    //     content: 'ddd',
-    //   }
-    // ]);
-    // this.setState({query: event.target.value});
   }
-
-  handleSubmit = (event) => event.preventDefault();
 
   render() {
     return (
@@ -55,6 +59,6 @@ export default class SearchForm extends React.Component {
           </span>
         </div>
       </form>
-    )
+    );
   }
 }

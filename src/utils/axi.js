@@ -1,15 +1,14 @@
-const axios = require('axios');
-const configEls = require('../config/els');
+import axios from "axios";
+import { host, port } from "../config/els";
 
-const baseUrl = `http://${configEls.host}:${configEls.port}`;
+const baseUrl = `http://${host}:${port}`;
 
 console.log('Elasticsearch address is ' + baseUrl);
 
 const axi = axios.create({
   baseURL: baseUrl,
-  headers: {
-    'Content-Type': 'application/json'
-  },
 });
 
-module.exports = axi;
+axi.defaults.headers.common['Accept'] = 'application/json';
+
+export default axi;

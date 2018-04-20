@@ -6,19 +6,19 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: null,
-    }
+      data: null,
+    };
   }
 
-  getResultsFromSearchForm = (results) => {
-    this.setState({results: results});
+  getDataFromSearchForm = (data) => {
+    this.setState({data: data});
   }
 
   render() {
     return (
-      <div>
-        <SearchForm sendResultsToParent={this.getResultsFromSearchForm} />
-        <Result results={this.state.results} />
+      <div className="center-block">
+        <SearchForm senddataToParent={this.getDataFromSearchForm} />
+        <Result data={this.state.data} />
       </div>
     );
   }
