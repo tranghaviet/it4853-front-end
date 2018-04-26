@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 class Item extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   console.log(props.item);
-  // }
-
   render() {
     return (
       <div className="list-group-item item">
@@ -19,11 +14,11 @@ class Item extends Component {
             Score: {this.props.item._score}
           </p>
         </div>
-        <div className="item-content">
+        {/* <div className="item-content">
           <p>
             {this.props.item._source.content}
           </p>
-        </div>
+        </div> */}
       </div>
     );
   }
