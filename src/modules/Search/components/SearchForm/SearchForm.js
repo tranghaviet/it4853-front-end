@@ -157,5 +157,8 @@ export default class SearchForm extends React.Component {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     this.setState({[event.target.name]: value});
     // console.log(this.state);
+    if (this.props.query != '') {
+      this.sendQuery(this.state.query);
+    }
   }
 }
