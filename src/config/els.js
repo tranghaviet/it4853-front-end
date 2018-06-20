@@ -2,7 +2,7 @@
  * elasticsearch config
  */
 module.exports = {
-  host: "127.0.0.1",
+  host: "192.168.0.109",
   port: 9200,
   index: "jobs",
 };

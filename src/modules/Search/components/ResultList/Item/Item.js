@@ -10,9 +10,9 @@ class Item extends Component {
           </a>
         </div>
         <div className="item-score">
-          <p>
+          <p><b>
             Score: {this.props.item._score}
-          </p>
+          </b></p>
         </div>
         <div className="item-content">
           <p>
